@@ -15,12 +15,21 @@ app.use((req, res, next) => {
     const method = req.method;
     const path = req.path;
     const ip = req.ip;
-  
+
     const logString = `${method} ${path} - ${ip}`;
-  
+
     console.log(logString);
-  
+
     next();
+});
+
+app.use('/now', (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+});
+
+app.get('/now', (req, res) => {
+    res.json({ time: req.time });
 });
 
 app.get('/json', (req, res) => {
