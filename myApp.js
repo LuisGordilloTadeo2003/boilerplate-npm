@@ -14,8 +14,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/json', (req, res) => {
-    res.send(process.env.MESSAGE_STYLE);
     const messageStyle = process.env.MESSAGE_STYLE;
+
+    res.json(messageStyle);
 
     let message;
 
