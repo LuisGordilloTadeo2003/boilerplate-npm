@@ -18,14 +18,15 @@ app.get('/json', (req, res) => {
     const messageStyle = process.env.MESSAGE_STYLE;
 
     let msg = 'Hello json';
+    let msgFin;
 
     if (messageStyle == 'uppercase') {
-        msg = msg.toUpperCase();
+        msgFin = msg.toUpperCase();
     } else {
-        msg = msg.toLowerCase();
+        msgFin = msg.toLowerCase();
     }
 
-    res.json({ msg });
+    res.json({ msgFin });
 })
 
 module.exports = app;
