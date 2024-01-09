@@ -10,20 +10,20 @@ const publicPath = path.join(__dirname, 'public');
 app.use('/public', express.static(publicPath));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 app.get('/json', (req, res) => {
     const messageStyle = process.env.MESSAGE_STYLE;
-  
+
     let msg = 'Hello json';
-  
+
     if (messageStyle == 'uppercase') {
-      msg.toUpperCase();
+        msg = msg.toUpperCase();
     } else {
-        msg.toLowerCase();
+        msg = msg.toLowerCase();
     }
-  
+
     res.json({ msg });
 })
 
