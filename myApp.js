@@ -11,6 +11,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+app.use((req, res, next) => {
+    const method = req.method;
+    const path = req.path;
+    const ip = req.ip;
+  
+    const logString = `${method} ${path} - ${ip}`;
+  
+    console.log(logString);
+  
+    next();
+});
+
 app.get('/json', (req, res) => {
     console.log(process.env.MESSAGE_STYLE);
     const messageStyle = process.env.MESSAGE_STYLE;
