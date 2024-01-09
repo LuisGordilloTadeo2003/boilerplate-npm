@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv').congif();
 
 const app = express();
 
@@ -11,7 +12,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/json', (req, res) => {
-    res.json({"message": "Hello json"});
+    const messageStyle = process.env.MESSAGE_STYLE;
+  
+    let msg = 'Hello json';
+  
+    if (messageStyle === 'uppercase') {
+      msg = msg.toUpperCase();
+    }
+  
+    res.json({ msg });
 })
 
 module.exports = app;
