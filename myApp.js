@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/json', (req, res) => {
+    console.log(process.env.MESSAGE_STYLE);
     const messageStyle = process.env.MESSAGE_STYLE;
 
     let msg = 'Hello json';
