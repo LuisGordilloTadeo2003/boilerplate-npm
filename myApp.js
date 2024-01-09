@@ -26,11 +26,13 @@ app.use((req, res, next) => {
 app.use('/now', (req, res, next) => {
     req.time = new Date().toString();
     next();
-});
+},
+    (req, res) => {
+        res.json({ time: req.time });
+    }
+)
 
-app.get('/now', (req, res) => {
-    res.json({ time: req.time });
-});
+
 
 app.get('/json', (req, res) => {
     console.log(process.env.MESSAGE_STYLE);
