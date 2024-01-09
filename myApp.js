@@ -1,8 +1,6 @@
 const express = require('express');
 const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config();
+require('dotenv').config();
 
 const app = express();
 
@@ -12,7 +10,7 @@ app.use('/public', express.static(publicPath));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
-    
+
 app.get('/json', (req, res) => {
     console.log(process.env.MESSAGE_STYLE);
     const messageStyle = process.env.MESSAGE_STYLE;
