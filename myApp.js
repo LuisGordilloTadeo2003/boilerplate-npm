@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
 
@@ -35,6 +36,8 @@ app.get(
         });
     }
 );
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/:word/echo', (req, res) => {
     let word = req.params.word;
