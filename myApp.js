@@ -36,7 +36,11 @@ app.get(
     }
 );
 
+app.get('/:word/echo', (req, res) => {
+    let word = req.params.word;
 
+    res.send({word: word});
+})
 
 app.get('/json', (req, res) => {
     console.log(process.env.MESSAGE_STYLE);
