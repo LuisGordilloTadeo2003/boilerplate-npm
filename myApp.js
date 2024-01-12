@@ -39,8 +39,27 @@ app.get(
 app.get('/:word/echo', (req, res) => {
     let word = req.params.word;
 
-    res.send({echo: word});
+    res.send({ echo: word });
 })
+
+app.route('/name')
+    .get((req, res) => {
+        const firstName = req.query.first || '';
+        const lastName = req.query.last || '';
+
+        const fullName = `${firstName} ${lastName}`;
+        const response = { name: fullName };
+
+        res.json(response);
+    })
+    .post((req, res) => {
+        const postData = req.body;
+        const fullName = `${postData.first} ${postData.last}`;
+
+        const response = { name: fullName };
+
+        res.json(response);
+    });
 
 app.get('/json', (req, res) => {
     console.log(process.env.MESSAGE_STYLE);
